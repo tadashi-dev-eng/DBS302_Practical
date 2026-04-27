@@ -79,25 +79,36 @@ Here two seperate queries was run to retrive orders for each users by using crea
 
 ![alt text](./assets/q5.2.png)
 
-
+The updateMany method is used to where it finds all the order and update the order status from PAID to DELIVER. 
 
 ![alt text](assets/orderstatus.png)
 
+To confirm the updataMany method worked, Used the find() method and it shows both order shows DELIVER. All other fields are unchanged.
+
 ![alt text](assets/status1.png)
+
+I have added 3 new documents(Wireless Ergonomic Mouse, Ultrabook Laptop 14, 27" 4K Monito) into the collection using insertMany() method.
 
 ![alt text](assets/addedp.png)
 
-I wanted to follow a suddent pipeline : captured, picked, packed, shipped , deleviered. So i have made a logic in the database to follow the pipeline.
+I wanted to follow a suddent pipeline : 
+- Captured (order management)
+- Picked (Inventor yretrieval)
+- Packed (Preparation)
+- shippedn(Dispatch)
+- Deleviered (Final receipt)
+  
+So i have made a logic in the database to follow the pipeline.
 
+I used the find method to check if the pipeline is working or not without using the time range.
 
 ![alt text](assets/findorder.png)
 
-Filter by status + time range:
+The main task is to filter order by status and time range. For that I used the $lte ( less than equal to) and $gte (greater than equal to)
 
 ![alt text](assets/statuwithtimerange.png)
 
 to list the products by categoryID first we have to create the index first. The index is like a table of content that allows the system to locate belonging to specific category without scaning everysingle record in the table.
-
 
 ![alt text](assets/category.png)
 
@@ -154,5 +165,8 @@ Aggregation with Index‑Friendly
 
 # Referrence
 
-![refferece](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.mongodb.com/docs/manual/tutorial/model-tree-structures-with-parent-references/&ved=2ahUKEwj8892IlIyUAxW-RmwGHYBgHPwQFnoECBgQAQ&usg=AOvVaw3Nkk06LUuMscdM5R8exK67)
 
+- [Reference 1](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.mongodb.com/docs/manual/tutorial/model-tree-structures-with-parent-references/&ved=2ahUKEwj8892IlIyUAxW-RmwGHYBgHPwQFnoECBgQAQ&usg=AOvVaw3Nkk06LUuMscdM5R8exK67)
+- [Reference 2](https://www.mongodb.com/docs/manual/reference/mql/query-predicates/comparison/)
+- [Reference 3](https://www.mongodb.com/docs/manual/core/timeseries/timeseries-querying/)
+- [Reference 4](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/)
