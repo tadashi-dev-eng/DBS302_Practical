@@ -42,7 +42,7 @@ Enabling TLS for Redis
 - Created a CA ( Certificate Authority ) for this lap.
 - Created a private key where only I can sign with it.
 
-![alt text](Assets/crt.png)
+![alt text](Assets/TLS.png)
 
 This creates ca.crt, redis.crt, redis.key in /etc/redis/tls.
 
@@ -84,7 +84,7 @@ The output shows the authenticated user and roles, confirming that auth is worki
 
 ## Enable TLS Encryption for MongoDB
 
-- TLS is used in data transit to encrypt the data. 
+- TLS is used in data transit to enclrypt the data. 
 - Generating a self-signed certificates for testing the TLS with MongoDB.
   
 ![alt text](Assets/tls.png)
