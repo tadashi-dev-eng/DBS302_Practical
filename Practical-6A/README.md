@@ -53,7 +53,7 @@ This creates ca.crt, redis.crt, redis.key in /etc/redis/tls.
 
 ## Part B : Securing MongoDB 
 
-- Start MongoDB Without Auth (Initial Setup Only). MongoDB without auth fails to load. 
+- Start MongoDB Without Auth.  MongoDB without auth fails to load. 
   
 ![alt text](Assets/mongodbadmin.png)
 
@@ -96,4 +96,27 @@ The output shows the authenticated user and roles, confirming that auth is worki
 - Connecting with TLS and Auth, here the command fails without --tls and without correct credentials the authentication fails. This shows how encryption and RBAC are enforced.
 
 ![alt text](Assets/tlsauth.png)
+
+## Security Audit Findings
+
+### Observations
+
+- ACL tests: Redis commands with ACL users were checked and produced expected error messages when unauthorized actions were attempted.
+- RBAC tests: MongoDB allowed operations for authorized roles and denied operations for users without the required permissions.
+- TLS tests: secure connections succeeded with valid TLS configuration, while connection attempts failed without TLS or with incorrect certificates.
+
+### Security Audit Summary
+
+- What is secure now?
+  - Redis authentication and ACL-based command restrictions are enabled.
+  - MongoDB authentication and role-based access control are enforced.
+  - TLS encryption is configured for both Redis and MongoDB to protect data in transit.
+
+- What still needs improvement?
+  - Password strength and rotation policies should be improved for both Redis and MongoDB users.
+  - Network restrictions and firewall rules should be tightened to limit database access to trusted hosts only.
+
+### Conclusion
+
+The security features implemented here show how authentication, ACL/RBAC, and TLS work together to protect NoSQL databases. Proper access controls prevent unauthorized commands and data access. Encryption in transit ensures credentials and query traffic are not exposed over the network.
 
